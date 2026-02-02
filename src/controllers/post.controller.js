@@ -24,6 +24,11 @@ export const updatePost = async (req,res) =>{
         post.title = req.body.title || post.title;
         post.body = req.body.body || post.body;
         if(req.file) post.image = req.file.path;
+        await post.save();
+
+        return res.status(200).json({
+            message: "Post updated successfully",post
+        })
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "Server Error"})
