@@ -5,7 +5,7 @@ export const createPost = async (req,res) =>{
         const post = await Post.create({
         title: req.body.title,
         body: req.body.body,
-        image: req.file?.path,
+        image: req.file?.path ? `/uploads/${req.file.filename}` : null,
         author: req.user.id
     });
     res.status(201).json(post);
