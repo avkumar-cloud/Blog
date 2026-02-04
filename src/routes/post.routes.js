@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post("/",protect,upload.single("image"), createPost);
 router.post("/:id",protect,upload.single("image"), updatePost);
-router.get("/getPosts", protect, getAllPosts);
-router.get("/:id/like", protect, likePost);
+router.get("/getPosts",  getAllPosts);
+router.get("/:id/like", likePost);
 
 export default router
